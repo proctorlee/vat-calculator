@@ -28,8 +28,6 @@ php bin/console doctrine:migrations:migrate
 # Start the Symfony server
 symfony server:start
 
-## Demo
-<img width="941" height="439" alt="image" src="https://github.com/user-attachments/assets/2cad8fb5-6d55-45ac-96e1-971a5200f6ae" />
 
 
 
