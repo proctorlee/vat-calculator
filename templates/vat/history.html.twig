@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calculation History{% endblock %}
+
+{% block body %}
+<div class="min-h-screen bg-gray-50 flex flex-col items-center py-10">
+    <div class="w-full max-w-4xl bg-white rounded-2xl shadow p-6">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">Calculation History</h1>
+
+        {% if history %}
+            <div class="overflow-x-auto">
+                <table class="min-w-full border border-gray-200 rounded-lg">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">Date</th>
+                            <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">Price</th>
+                            <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">Rate</th>
+                            <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">VAT</th>
+                            <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        {% for calc in history %}
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">{{ calc.createdAt|date('Y-m-d H:i') }}</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">{{ calc.price|format_currency('GBP') }}</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">{{ calc.rate }}%</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">{{ calc.vat|format_currency('GBP') }}</td>
+                                <td class="px-4 py-2 font-semibold text-gray-900">{{ calc.total|format_currency('GBP') }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p class="text-gray-500">No calculations yet.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
