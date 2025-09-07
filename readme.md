@@ -29,6 +29,5 @@ php bin/console doctrine:migrations:migrate
 symfony server:start
 
 ## Demo
-<video src="assets/demo/demo.mp4" controls autoplay loop muted width="400">
-Your browser does not support the video tag.
-</video>
+![VAT Calculator Demo](assets/demo/demo.gif)
+
