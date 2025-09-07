@@ -29,5 +29,5 @@ php bin/console doctrine:migrations:migrate
 symfony server:start
 
 ## Demo
-![VAT Calculator Demo](demo.gif)
+![demo](https://github.com/user-attachments/assets/a916faf4-1014-4861-aa6e-bf1d945d0ee5)
 
