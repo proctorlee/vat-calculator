@@ -28,6 +28,7 @@ php bin/console doctrine:migrations:migrate
 # Start the Symfony server
 symfony server:start
 
-## Demo
-![VAT Calculator Demo](demo.gif)
+
+
+
 
