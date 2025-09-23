@@ -15,11 +15,23 @@
     </head>
     <body>
         <nav class="bg-blue-600 text-white shadow">
-            <div class="max-w-7xl mx-auto px-4 py-3 flex space-x-6">
-                <a href="{{ path('app_vat') }}" class="hover:text-gray-200">Calculator</a>
-                <a href="{{ path('app_vat_history') }}" class="hover:text-gray-200">History</a>
+            <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+                
+                <!-- Left side links -->
+                <div class="flex space-x-6">
+                    <a href="{{ path('app_home') }}" class="hover:text-gray-200">Home</a>
+                    <a href="{{ path('app_vat') }}" class="hover:text-gray-200">Calculator</a>
+                    <a href="{{ path('app_vat_history') }}" class="hover:text-gray-200">History</a>
+                </div>
+
+                <!-- Right side links -->
+                <div class="flex space-x-6">
+                    <a href="{{ path('app_login') }}" class="hover:text-gray-200">Login</a>
+                    <a href="{{ path('app_logout') }}" class="hover:text-gray-200">Logout</a>
+                </div>
             </div>
         </nav>
+
 
         {% block body %}{% endblock %}
     </body>
