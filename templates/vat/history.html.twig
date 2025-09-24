@@ -3,11 +3,44 @@
 {% block title %}Calculation History{% endblock %}
 
 {% block body %}
+
 <div class="min-h-screen bg-gray-50 flex flex-col items-center py-10">
     <div class="w-full max-w-4xl bg-white rounded-2xl shadow p-6">
         <h1 class="text-2xl font-bold text-gray-800 mb-6">Calculation History</h1>
 
-        {% if history %}
+        {% if pagination %}
+
+        <p>Filter</p>
+
+        <form method="get" class="mb-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+
+            <input
+                type="number"
+                step="0.01"
+                name="min"
+                placeholder="Min price"
+                value="{{ min }}"
+                class="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+
+            <input
+                type="number"
+                step="0.01"
+                name="max"
+                placeholder="Max price"
+                value="{{ max }}"
+                class="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+
+            <button
+                type="submit"
+                class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+            >
+                Filter
+            </button>
+            
+        </form>
+
             <div class="overflow-x-auto">
                 <table class="min-w-full border border-gray-200 rounded-lg">
                     <thead class="bg-gray-100">
@@ -20,7 +53,7 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                        {% for calc in history %}
+                        {% for calc in pagination %}
                             <tr>
                                 <td class="px-4 py-2 text-sm text-gray-700">{{ calc.createdAt|date('Y-m-d H:i') }}</td>
                                 <td class="px-4 py-2 text-sm text-gray-700">{{ calc.price|format_currency('GBP') }}</td>
@@ -31,6 +64,11 @@
                         {% endfor %}
                     </tbody>
                 </table>
+
+                <div class="mt-6">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+
             </div>
         {% else %}
             <p class="text-gray-500">No calculations yet.</p>

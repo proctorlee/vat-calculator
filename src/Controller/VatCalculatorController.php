@@ -49,22 +49,6 @@ class VatCalculatorController extends AbstractController
             'result' => $result,
             'history' => $history,
         ]);
-    }
-
-    #[Route('/history', name: 'app_vat_history')]
-    public function history(): Response
-    {
-        // Simply denys access unless user logged in and has this role 
-        // There was a flicker of the page before redirected? Swapped to access control in security.yaml
-        // $this->denyAccessUnlessGranted('ROLE_ADMIN');
-
-        $history = $this->em->getRepository(VatCalculation::class)
-            ->findBy([], ['createdAt' => 'DESC']); // all calculations
-
-        return $this->render('vat/history.html.twig', [
-            'history' => $history,
-        ]);
-    }
-
+    }   
 
 }
